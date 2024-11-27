@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 dotenv.config();
 import pg from 'pg';
+import cors from 'cors';
 
 const { Client } = pg;
 const client = new Client({
@@ -20,6 +21,7 @@ async function conectar(){
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/svg/:estado/:municipio', async (req, res) => { 
     let estado = req.params.estado;

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import client from './database/postgre.js';
 
-import sequelize from './database/sequelize.js';
+import Escola from './model/Escola.js';
 
 // const app = express();
 // app.use(express.json());

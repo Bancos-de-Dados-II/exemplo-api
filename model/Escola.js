@@ -17,3 +17,7 @@ const Escola = sequelize.define('escola', {
         allowNull: false
     } 
 });
+
+Escola.sync();
+
+export default Escola;

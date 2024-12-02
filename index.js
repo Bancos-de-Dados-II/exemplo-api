@@ -1,23 +1,6 @@
-import dotenv from 'dotenv';
 import express from 'express';
-dotenv.config();
-import pg from 'pg';
 import cors from 'cors';
-
-const { Client } = pg;
-const client = new Client({
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    database: process.env.POSTGRES_DB
-});
-
-conectar();
-
-async function conectar(){
-    await client.connect();
-}
+import client from './database/postgre.js';
 
 const app = express();
 app.use(express.json());

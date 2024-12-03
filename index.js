@@ -1,12 +1,16 @@
 import express from 'express';
 import cors from 'cors';
-import client from './database/postgre.js';
+import escolaRouter from './router/escolaRouter.js';
 
-import Escola from './model/Escola.js';
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-// const app = express();
-// app.use(express.json());
-// app.use(cors());
+app.use('/escolas', escolaRouter);
+
+app.listen(3000, () =>{
+    console.log('Aplicação rodando na porta 3000');
+});
 
 // app.get('/svg/:estado/:municipio', async (req, res) => { 
 //     let estado = req.params.estado;
@@ -21,8 +25,4 @@ import Escola from './model/Escola.js';
 //         viewBox: viewBox.rows[0].getviewbox
 //     });
 
-// });
-
-// app.listen(3000, () =>{
-//     console.log('Aplicação rodando na porta 3000');
 // });

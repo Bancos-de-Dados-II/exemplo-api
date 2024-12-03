@@ -23,3 +23,12 @@ export async function deletarEscola(req, res){
     await escola.destroy();
     res.json(escola);
 }
+
+export async function buscarEscola(req, res){
+    const escola = await Escola.findByPk(req.params.id);
+    if(!escola){
+        res.status(404).send("Escola não encontrada");
+        return;
+    }
+    res.json(escola);
+}

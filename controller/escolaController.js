@@ -32,3 +32,18 @@ export async function buscarEscola(req, res){
     }
     res.json(escola);
 }
+
+export async function atualizarEscola(req, res){
+    try{
+        const escola = await Escola.findByPk(req.params.id);
+        if(!escola){
+            res.status(404).send("Escola não encontrada");
+            return;
+        }
+        escola.set(req.body);
+        await escola.save();
+        res.json(escola);
+    }catch(err){
+        res.status(400).send(err.errors[0].message);
+    }
+}

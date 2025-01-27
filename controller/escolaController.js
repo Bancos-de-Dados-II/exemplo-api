@@ -1,8 +1,18 @@
 import Escola from "../model/Escola.js";
+import client from "../database/redis.js";
 
 export async function listarEscolas(req, res){
-    const escolas = await Escola.findAll();
-    res.json(escolas);
+    const cache = await client.get('escolas');
+    if(!cache){
+        const escolas = await Escola.findAll();
+        await client.set('escolas', 
+            JSON.stringify(escolas), {'EX': 3600});
+        res.json(escolas);
+        console.log('Retornando do postgre');
+        return;
+    }
+    console.log('Retornando do redis');
+    res.json(JSON.parse(cache));
 }
 
 export async function criarEscola(req, res){

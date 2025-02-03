@@ -1,4 +1,4 @@
-import mongoose from "../database/mongoose";
+import mongoose from "../database/mongoose.js";
 import {randomUUID} from "crypto";
 const {Schema} = mongoose;
 
@@ -29,3 +29,6 @@ const eventoSchema = new Schema({
         }
     }
 });
+
+const Evento = mongoose.model('Evento', eventoSchema);
+export default Evento;

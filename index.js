@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import escolaRouter from './router/escolaRouter.js';
+import Evento from './model/Evento.js';
 
 const app = express();
 app.use(express.json());

@@ -5,8 +5,7 @@ const {Schema} = mongoose;
 const eventoSchema = new Schema({
     id:{
         type: 'UUID',
-        default: () => randomUUID(),
-        required: true
+        default: () => randomUUID()    
     },
     descricao: String,
     data: {

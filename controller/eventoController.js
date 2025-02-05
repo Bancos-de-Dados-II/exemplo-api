@@ -19,6 +19,18 @@ export async function deletarEvento(req, res){
             res.json({message: 'Evento deletado com sucesso'});
             return;
          }
+         res.status(404).json({message: 'Evento não encontrado'});
       })
-   res.status(404).json({message: 'Evento não encontrado'});
+}
+
+export async function atualizarEvento(req, res){
+   const id = req.params.id;
+   Evento.updateOne({_id: id}, req.body).
+      then(result => {
+         if(result.modifiedCount>0){
+            res.json({message: 'Evento atualizado com sucesso'});
+            return;
+         }
+         res.status(404).json({message: 'Evento não encontrado'});
+      })
 }

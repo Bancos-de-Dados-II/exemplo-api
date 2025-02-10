@@ -29,5 +29,8 @@ const eventoSchema = new Schema({
     }
 });
 
+eventoSchema.index({descricao: "text"},
+    {default_language: "pt"});
+
 const Evento = mongoose.model('Evento', eventoSchema);
 export default Evento;

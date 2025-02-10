@@ -34,3 +34,12 @@ export async function atualizarEvento(req, res){
          res.status(404).json({message: 'Evento não encontrado'});
       })
 }
+
+export async function buscarPorDescricao(req, res){
+   const descricao = req.params.descricao;
+   const eventos = await Evento.find({
+      $text: {
+         $search: descricao
+      }
+   });
+}

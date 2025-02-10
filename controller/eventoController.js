@@ -41,5 +41,6 @@ export async function buscarPorDescricao(req, res){
       $text: {
          $search: descricao
       }
-   });
+   }, {descricao:1, _id:0});
+   res.json(eventos);
 }
